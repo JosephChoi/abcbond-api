@@ -1,5 +1,5 @@
 {
-  "name": "abcbon-api",
+  "name": "abcbond-api",
   "version": "1.0.0",
   "description": "ABC Bond API - 부동산 투자 플랫폼 백엔드",
   "main": "src/index.js",
