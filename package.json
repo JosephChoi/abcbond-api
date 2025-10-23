@@ -1,0 +1,33 @@
+{
+  "name": "abcbon-api",
+  "version": "1.0.0",
+  "description": "ABC Bond API - 부동산 투자 플랫폼 백엔드",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "deploy:dev": "wrangler deploy --env dev",
+    "deploy:prod": "wrangler deploy --env production",
+    "db:create": "wrangler d1 create abcbond-db",
+    "db:init": "wrangler d1 execute abcbond-db --file=./schema.sql --remote",
+    "db:init:local": "wrangler d1 execute abcbond-db --file=./schema.sql --local"
+  },
+  "keywords": [
+    "cloudflare",
+    "workers",
+    "hono",
+    "investment",
+    "real-estate",
+    "abc-bond"
+  ],
+  "author": "ABC Bond",
+  "license": "ISC",
+  "dependencies": {
+    "hono": "^4.0.0",
+    "@hono/swagger-ui": "^0.2.0",
+    "jose": "^5.2.0"
+  },
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  }
+}

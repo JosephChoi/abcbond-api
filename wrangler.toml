@@ -1,0 +1,65 @@
+name = "abcbon-api"
+main = "src/index.js"
+compatibility_date = "2024-01-01"
+
+# Environment variables (non-sensitive)
+[vars]
+ENVIRONMENT = "development"
+
+# Development environment
+[env.dev]
+name = "abcbon-api-dev"
+vars = { ENVIRONMENT = "development" }
+
+# Production environment
+[env.production]
+name = "abcbon-api-prod"
+vars = { ENVIRONMENT = "production" }
+
+# Environment Variables Configuration:
+#
+# LOCAL DEVELOPMENT:
+#   .dev.vars file is already created with a generated JWT_SECRET
+#   Wrangler automatically loads .dev.vars when running `wrangler dev`
+#   Edit .dev.vars to change values if needed
+#
+# PRODUCTION DEPLOYMENT:
+#   Use Wrangler secrets for sensitive data
+#   wrangler secret put JWT_SECRET --env production
+#
+# Generate new JWT_SECRET:
+#   node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
+
+# ============================================
+# Cloudflare Bindings Configuration
+# ============================================
+
+# KV Namespace (Key-Value Storage)
+# Uncomment and configure to use KV
+# [[kv_namespaces]]
+# binding = "KV"
+# id = "your-kv-namespace-id"
+# preview_id = "your-preview-kv-namespace-id"
+
+# D1 Database (SQLite)
+# To create a new D1 database:
+# 1. wrangler d1 create abcbond-db
+# 2. Copy the database_id from the output
+# 3. Update the database_id below
+# 4. Initialize schema: wrangler d1 execute abcbond-db --file=./schema.sql
+[[d1_databases]]
+binding = "DB"
+database_name = "abcbond-db"
+database_id = "bb6bea39-d0c9-45ef-8916-dbeeae45fa20"
+
+# R2 Bucket (Object Storage)
+# Uncomment and configure to use R2
+# [[r2_buckets]]
+# binding = "BUCKET"
+# bucket_name = "your-bucket"
+# preview_bucket_name = "your-preview-bucket"
+
+# OpenAI Configuration (via AI Gateway)
+# Add to .dev.vars:
+#   OPENAI_API_KEY=sk-...
+#   AI_GATEWAY_URL=https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_name}/openai

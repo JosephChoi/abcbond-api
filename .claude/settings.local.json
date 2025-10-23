@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir:*)",
+      "Bash(tree:*)",
+      "Bash(node -e:*)",
+      "Bash(find:*)",
+      "Bash(if [ -d \"c:\\workspace\\workers-template\\src\\schemas\" ])",
+      "Bash(then rm -rf \"c:\\workspace\\workers-template\\src\\schemas\")",
+      "Bash(fi)",
+      "Bash(git init:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nInitial commit: Cloudflare Workers template with Hono framework\n\n- JWT authentication with 24h token expiration\n- REST API routes (auth, users)\n- Service layer pattern with env injection\n- OpenAPI/Swagger documentation\n- D1 database schema\n- OpenAI service integration\n- Comprehensive development guide (CONTRIBUTING.md)\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git remote add:*)",
+      "Bash(git branch:*)",
+      "Bash(git push:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\ndocs: Update README with emphasis on CONTRIBUTING.md for AI developers\n\n- Add warning box at top emphasizing CONTRIBUTING.md is mandatory\n- Strengthen \"Development Guide\" section with (Required) label\n- Add checklist of what''s included in CONTRIBUTING.md\n- Add specific guidance for AI developers to reference standards first\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git commit -m \"$(cat <<''EOF''\nfeat: Add AI development instructions for automatic CONTRIBUTING.md reference\n\n- Add .claude/prompts.md for automatic guide reference on session start\n- Update README with explicit AI command examples\n- Provide clear instructions for AI assistants (Claude, ChatGPT)\n- Ensure all AI-generated code follows project standards\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
