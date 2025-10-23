@@ -20,7 +20,20 @@ export class AuthService {
     const userService = new UserService(this.env);
     const user = await userService.getUserByUsername(username);
 
-    if (!user || user.password !== password) {
+    // 디버깅 로그 추가
+    console.log('Login attempt:', {
+      username,
+      userFound: !!user,
+      passwordMatch: user ? user.password === password : false
+    });
+
+    if (!user) {
+      console.log('User not found:', username);
+      return null;
+    }
+
+    if (user.password !== password) {
+      console.log('Password mismatch for user:', username);
       return null;
     }
 

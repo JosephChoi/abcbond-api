@@ -12,8 +12,11 @@ auth.post('/login', async (c) => {
     const body = await c.req.json();
     const { username, password } = body;
 
+    console.log('Login request received:', { username, hasPassword: !!password });
+
     // Validate input
     if (!username || !password) {
+      console.log('Validation failed: missing username or password');
       return c.json({
         error: 'Validation Error',
         message: 'Username and password are required'
@@ -27,6 +30,7 @@ auth.post('/login', async (c) => {
     const user = await authService.authenticateUser(username, password);
 
     if (!user) {
+      console.log('Authentication failed for user:', username);
       return c.json({
         error: 'Authentication Failed',
         message: 'Invalid username or password'
@@ -36,6 +40,7 @@ auth.post('/login', async (c) => {
     // Generate JWT token
     const token = await authService.generateToken(user);
 
+    console.log('Login successful for user:', username);
     return c.json({
       message: 'Login successful',
       token: token,
@@ -43,7 +48,7 @@ auth.post('/login', async (c) => {
         id: user.id,
         username: user.username,
         email: user.email,
-        role: user.role
+        name: user.name
       },
       expiresIn: '24h'
     });
